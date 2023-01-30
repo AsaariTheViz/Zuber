@@ -104,18 +104,29 @@ def stats(update, context):
 '''
 
     else:
-            stats = f'<b>╭─《🌐 BOT STATISTICS 🌐》</b>\n' \
-                    f'<b>├  Updated On: </b>{last_commit}\n'\
-                    f'<b>├  Uptime: </b>{currentTime}\n'\
-                    f'<b>├  Version: </b>{version}\n'\
-                    f'<b>├  OS Uptime: </b>{osUptime}\n'\
-                    f'<b>├  CPU:</b> [{progress_bar(cpuUsage)}] {cpuUsage}%\n'\
-                    f'<b>├  RAM:</b> [{progress_bar(mem_p)}] {mem_p}%\n'\
-                    f'<b>├  Disk:</b> [{progress_bar(disk)}] {disk}%\n'\
-                    f'<b>├  Disk Free:</b> {free}\n'\
-                    f'<b>├  Upload Data:</b> {sent}\n'\
-                    f'<b>╰  Download Data:</b> {recv}\n\n'
-
+            stats = f'''
+<b>UPSTREAM AND BOT STATUS</b>
+<b>┌ Commit Date:</b> {last_commit}
+<b>├ Bot Uptime:</b> {get_readable_time(time() - botStartTime)}
+<b>└ OS Uptime:</b> {get_readable_time(time() - boot_time())}\n
+<b>SYSTEM STATUS</b>
+<b>┌ SWAP:</b> {get_readable_file_size(swap_memory().total)}
+<b>├ Total Cores:</b> {cpu_count(logical=True)}
+<b>├ Physical Cores:</b> {cpu_count(logical=False)}
+<b>├ Upload:</b> {get_readable_file_size(net_io_counters().bytes_sent)}
+<b>├ Download:</b> {get_readable_file_size(net_io_counters().bytes_recv)}
+<b>├ Disk Free:</b> {get_readable_file_size(disk_usage("/")[2])}
+<b>├ Disk Used:</b> {get_readable_file_size(disk_usage("/")[1])}
+<b>├ Disk Space:</b> {get_readable_file_size(disk_usage("/")[0])}
+<b>├ Memory Free:</b> {get_readable_file_size(virtual_memory().available)}
+<b>├ Memory Used:</b> {get_readable_file_size(virtual_memory().used)}
+<b>├ Memory Total:</b> {get_readable_file_size(virtual_memory().total)}
+<b>├ CPU:</b> {progress_bar(cpu_percent(interval=1))} {cpu_percent(interval=1)}%
+<b>├ RAM:</b> {progress_bar(virtual_memory().percent)} {virtual_memory().percent}%
+<b>├ DISK:</b> {progress_bar(disk_usage("/")[3])} {disk_usage("/")[3]}%
+<b>├ SWAP:</b> {progress_bar(swap_memory().percent)} {swap_memory().percent}%
+<b>└ OS:</b> {system()}, {architecture()[0]}, {release()}\n
+'''
 
 
     if config_dict['SHOW_LIMITS_IN_STATS']:
