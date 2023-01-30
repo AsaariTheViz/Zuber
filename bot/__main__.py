@@ -78,7 +78,7 @@ def stats(update, context):
     mem_a = get_readable_file_size(memory.available)
     mem_u = get_readable_file_size(memory.used)
     if config_dict['EMOJI_THEME']:
-            stats = stats = f'''
+            stats = f'''
 <b>UPSTREAM AND BOT STATUS</b>
 <b>┌ Commit Date:</b> {last_commit}
 <b>├ Bot Uptime:</b> {get_readable_time(time() - botStartTime)}
