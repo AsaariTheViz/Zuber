@@ -80,11 +80,11 @@ def stats(update, context):
     mem_u = get_readable_file_size(memory.used)
     if config_dict['EMOJI_THEME']:
             stats = f'''
-<b>UPSTREAM AND BOT STATUS</b>
+<b>BOT STATISTICS 📊</b>
 <b>┌ Commit Date:</b> {last_commit}
 <b>├ Bot Uptime:</b> {get_readable_time(time() - botStartTime)}
 <b>└ OS Uptime:</b> {get_readable_time(time() - boot_time())}\n
-<b>SYSTEM STATUS</b>
+<b>SYSTEM STATS 🧮 </b>
 <b>┌ SWAP:</b> {get_readable_file_size(swap_memory().total)}
 <b>├ Total Cores:</b> {cpu_count(logical=True)}
 <b>├ Physical Cores:</b> {cpu_count(logical=False)}
@@ -92,7 +92,7 @@ def stats(update, context):
 <b>├ Download:</b> {get_readable_file_size(net_io_counters().bytes_recv)}
 <b>├ Disk Free:</b> {get_readable_file_size(disk_usage("/")[2])}
 <b>├ Disk Used:</b> {get_readable_file_size(disk_usage("/")[1])}
-<b>├ Disk Space:</b> {get_readable_file_size(disk_usage("/")[0])}
+<b>├ Disk Total:</b> {get_readable_file_size(disk_usage("/")[0])}
 <b>├ Memory Free:</b> {get_readable_file_size(virtual_memory().available)}
 <b>├ Memory Used:</b> {get_readable_file_size(virtual_memory().used)}
 <b>├ Memory Total:</b> {get_readable_file_size(virtual_memory().total)}
@@ -105,11 +105,11 @@ def stats(update, context):
 
     else:
             stats = f'''
-<b>UPSTREAM AND BOT STATUS</b>
+<b>BOT STATISTICS 📊</b>
 <b>┌ Commit Date:</b> {last_commit}
 <b>├ Bot Uptime:</b> {get_readable_time(time() - botStartTime)}
 <b>└ OS Uptime:</b> {get_readable_time(time() - boot_time())}\n
-<b>SYSTEM STATUS</b>
+<b>SYSTEM STATS 🧮</b>
 <b>┌ SWAP:</b> {get_readable_file_size(swap_memory().total)}
 <b>├ Total Cores:</b> {cpu_count(logical=True)}
 <b>├ Physical Cores:</b> {cpu_count(logical=False)}
@@ -117,7 +117,7 @@ def stats(update, context):
 <b>├ Download:</b> {get_readable_file_size(net_io_counters().bytes_recv)}
 <b>├ Disk Free:</b> {get_readable_file_size(disk_usage("/")[2])}
 <b>├ Disk Used:</b> {get_readable_file_size(disk_usage("/")[1])}
-<b>├ Disk Space:</b> {get_readable_file_size(disk_usage("/")[0])}
+<b>├ Disk Total:</b> {get_readable_file_size(disk_usage("/")[0])}
 <b>├ Memory Free:</b> {get_readable_file_size(virtual_memory().available)}
 <b>├ Memory Used:</b> {get_readable_file_size(virtual_memory().used)}
 <b>├ Memory Total:</b> {get_readable_file_size(virtual_memory().total)}
